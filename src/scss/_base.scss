@@ -1,0 +1,25 @@
+*, ::after, ::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  font-size: 100%;
+  color: #fff;
+
+  &::-webkit-scrollbar { 
+    display: none;
+  }
+}
+h1{
+  font-size: $x-large;
+  line-height: 2.5rem;
+}
+p{
+  margin: 0.3rem 0;
+  padding: 0.1rem;
+  max-width: 95%;
+  flex-wrap: wrap;
+  font-weight: 300;
+}
