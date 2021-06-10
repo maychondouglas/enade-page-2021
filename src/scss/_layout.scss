@@ -9,12 +9,12 @@
   min-height: 100vh;
   width: 100vw;
 
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar { 
+  //overflow-y: scroll;
+  
+  /* &::-webkit-scrollbar { 
     background-color: transparent;
     color: transparent;
-  }
+  } */
 
   background: $primary-color;
   background: linear-gradient(90deg, $secondary-color 0%,   $primary-color 180%);
@@ -29,5 +29,9 @@
   }
 
 
+  .o-que-e_atributos{
+    display: flex;
+  }
 
 }
+

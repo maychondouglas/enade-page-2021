@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="128" viewBox="0 0 130 128">
+  <g id="Grupo_34" data-name="Grupo 34" transform="translate(-1542 -3620)">
+    <rect id="Retângulo_34" data-name="Retângulo 34" width="130" height="128" rx="64" transform="translate(1542 3620)" fill="#fdb833"/>
+    <g id="hourglass_top_black_24dp" transform="translate(1573 3651)">
+      <g id="Grupo_24" data-name="Grupo 24">
+        <rect id="Retângulo_35" data-name="Retângulo 35" width="72" height="72" fill="none"/>
+      </g>
+      <g id="Grupo_25" data-name="Grupo 25" transform="translate(17.918 5.973)">
+        <path id="Caminho_217" data-name="Caminho 217" d="M6,2l.03,17.918L17.945,31.863,6.03,43.838,6,61.725H41.835V43.808L29.89,31.863,41.835,19.947V2ZM35.863,45.3V55.753H11.973V45.3L23.918,33.356Z" transform="translate(-6 -2)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

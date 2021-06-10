@@ -28,14 +28,11 @@ section {
   border-bottom: solid 1px;
   height: 100vh;
   width: 100vw;
-  
-  
+  padding: 2rem;
   left: 0;
-  top: 0;
-
-
+  
   &.section_sec-01{
-    margin: 5rem auto;
+    box-sizing: border-box;
 
     .container{
       display: grid;
@@ -55,28 +52,29 @@ section {
         &-image{
           grid-column: 2;
           display: flex;
+          justify-content: flex-end;
           align-items: flex-end;
           position: relative;
           
                       
-          &::after{
-            content: ' ';
-            display: flex;
-            width: 5rem;
-            height: 10rem;
-            background-color: $secondary-color;
-            position: absolute;
-            
-            left: 1rem;
-            border-radius: 100px;
-            top: 30%;
-          }
           &::before{
             content: ' ';
             display: flex;
             width: 5rem;
-            height: 7rem;
+            height: 10rem;
             background-color: $quartenary-color;
+            position: absolute;
+            
+            left: 3rem;
+            border-radius: 100px;
+            top: 30%;
+          }
+          &::after{
+            content: ' ';
+            display: flex;
+            width: 5rem;
+            height: 7rem;
+            background-color: $secondary-color;
             position: absolute;
             border-radius: 100px;
             z-index: 10;
@@ -85,7 +83,8 @@ section {
           }
 
           img{
-            height: 85vh;
+            height: 500px;
+            width: auto;
             position: relative;
             z-index: 1;
           }
@@ -98,6 +97,166 @@ section {
       }
 
       
+    }
+  }
+
+  &.section_sec-02{
+    
+    .container{
+
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+
+      .o-que-e{
+        grid-column: span 6;
+  
+        &_atributos{
+          grid-column: span 6;
+        }
+      }
+
+      
+      .search-content{
+        grid-column: 1/-1;
+        
+        display: flex;
+        justify-content: center;
+        form{
+          margin: 2rem;
+          max-width: 50%;
+          display: flex;
+          flex-direction: column;
+
+          label{
+            text-align: center;
+            color: $tertiary-color;
+            font-weight: 700;
+            font-size: $medium;
+            line-height: $medium;
+          }
+
+          input[type='text']{
+            margin: 0.5rem;
+            background-color: $quartenary-color;
+            padding: 0.8rem 1.5rem;
+            outline: none;
+            border: none;
+            border-radius: 20px;
+            font-size: $medium;
+            color: #fff;
+
+            &::placeholder{
+              color: #D9D9D9;
+              position: relative;
+
+
+            }
+          }
+        }
+      }
+      .courses-content{
+
+        background-image: linear-gradient(to right, #ffffff00 0%, #ffffff10 50%, #ffffff00 100% );
+        grid-column: 1/-1;
+
+        h3{
+          width: 100%;
+          text-align: center;
+          
+        }
+        .courses-list{
+          columns: 3;
+          
+
+          li{
+            margin: 0.2rem 0;
+
+          }
+        }
+      }
+    }
+
+  }
+
+  &.section_sec-03{
+    .container{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      height: 100%;
+      
+
+      .se-prepare{
+
+        &_first-content{
+          grid-column: span 6;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .materials-list{
+
+            &_item{
+              display: flex;
+              align-items: center;
+              span{
+                display: inline-flex;
+                max-width: 50%;
+                line-height: $small + 0.1rem;
+              }
+              img{
+                height: 3.5rem;
+                width: 3.5rem;
+                margin: 0.5rem 1rem;
+              }
+            }
+          }
+        }
+
+        &_last-content{
+          grid-column: span 6;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          &>span{
+            font-size: $medium;
+            text-align: center;
+            line-height: $medium + 0.2rem;
+            margin: 0.8rem;
+            width: 100%;
+          }
+
+          img{
+            &.img-chamada{
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.section_sec-04{
+    
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      .schendule-part{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+      }
     }
   }
 }
@@ -120,6 +279,13 @@ section {
   &-primary{
     background-color: $tertiary-color;
     color: $primary-color;
+    transition: ease-in-out 0.1s;
+
+    &:hover{
+      -webkit-box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);
+      -moz-box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);
+      box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);  
+    }
     
   }
   &-secondary{
@@ -127,5 +293,191 @@ section {
     color: $tertiary-color;
     border: solid 2px $tertiary-color;
     
+    transition: ease-in-out 0.1s;
+
+    &:hover{
+      -webkit-box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);
+      -moz-box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);
+      box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.46);  
+    }
+  }
+
+  &-with-icon{
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 18rem;
+    border-radius: 20px;
+    height: 3.5rem;
+    background: $secondary-color;
+    color: white;
+    box-shadow: 4px 2px 25px -1px rgba(0,0,0,0.2);  
+
+    span{
+      position: absolute;
+      right: 0;
+      width: 75%;
+    }
+
+    .button-icon{
+      background-color: $primary-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      width: 25%;
+
+      img{
+        height: 2.5rem;
+      }
+    }
+
+    transition: ease-in-out 0.2s;
+
+    &:hover{
+      transform: scale(1.1);
+      background-color: $quintenary-color;
+
+    }
+    &:active{
+      background-color: $primary-color;
+    }
+  }
+}
+
+//Attributes
+
+.attribute{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  &_icon{
+    padding: 2rem;
+    background-color: $secondary-color;
+    display: flex;
+    width: fit-content;
+    border-radius: 100px;
+
+    img{
+      height: 2.5rem;
+    }
+  }
+
+  span{
+    margin-top: 1rem;
+    display: flex;
+    width: 10rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: $x-small;
+    flex-wrap: wrap;
+  }
+
+}
+
+//SchenduleDate
+.schendule{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .date-schendule{
+    display: flex;
+    width: 80%;
+    background-color: #6E4CD8;
+    margin: 0.5rem 0;
+    position: relative;
+    min-height: 2.5rem;
+  
+    .schendule_date_period{
+        background-color: $primary-color;
+        min-width: 12rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $small + 0.2rem;
+        font-weight: 600;
+        
+  
+  
+  
+    }
+    .schendule_date_description{
+      padding: 1rem;
+      font-size: $small + 0.2rem;
+      position: relative;
+      max-width: 65%;
+      line-height: $small + 0.3rem;
+      font-weight: 300;
+      
+      
+      &::before{
+        content: ' ';
+        position: absolute;
+        left: 0;
+        z-index: 100;
+        width: 0; 
+        
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-left: 10px solid #ABA8B2;
+      }
+    }
+    .schendule_date_icon{
+      align-self: end;
+      position: absolute;
+      right: 0;
+      img{
+        height: 3.5rem;
+      }
+    }  
+    &_during{
+      .schendule_date_period{
+        background-color: $tertiary-color;
+      }
+      .schendule_date_description{
+  
+  
+        &::before{
+          border-left: 10px solid $tertiary-color;
+        }
+      }
+      .schendule_date_icon{
+  
+      }
+    }
+    &_after{
+      .schendule_date_period{
+        background-color: $quintenary-color;
+      }
+      .schendule_date_description{
+        &::before{
+          border-left: 10px solid $quintenary-color;
+        }
+      }
+      .schendule_date_icon{
+  
+      }    
+    }
+    &_before{
+      .schendule_date_period{
+        
+      }
+      .schendule_date_description{
+        &::before{
+          border-left: 10px solid $primary-color;
+        }
+      }
+      .schendule_date_icon{
+  
+      }   
+    }
   }
 }
