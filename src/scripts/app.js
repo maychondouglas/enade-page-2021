@@ -75,7 +75,7 @@ const Header = (props) => {
 
 const Section = (props) => {
   return (
-    <section className={`section_${props.name}`}>
+    <section id={ props.id } className={`section_${props.name}`}>
       <div className={`container ${props.name}`}>
         {props.children}
       </div>
@@ -88,13 +88,13 @@ const Button = (props) => {
   switch (props.type) {
     case 'button-with-icon':
       return (
-        <button className={`btn ${ props.secondaryClass }`}  onClick={ props.setScrollPage }  disabled={ props.btnDisabled?true:false }><span class="button-icon"><img src={`images/icons/${props.iconName}.svg`}/></span><span>{props.children}</span></button>
+        <a href={props.href} className={`btn ${ props.secondaryClass }`} disabled={ props.btnDisabled?true:false }><span class="button-icon"><img src={`images/icons/${props.iconName}.svg`}/></span><span>{props.children}</span></a>
       );  
       break;
   
     default:
       return (
-        <button className={`btn ${ props.secondaryClass }`} onClick={ props.setScrollPage }  disabled={ props.btnDisabled?true:false }>{props.children}</button>
+        <a href={props.href} className={`btn ${ props.secondaryClass }`} disabled={ props.btnDisabled?true:false }>{props.children}</a>
       );  
       break;
   }
@@ -165,25 +165,24 @@ const SchenduleDate = (props) => {
 
 const App = () => {
 
-  const [scrollPage, setScrollPage] = new React.useState(0);
-
   return (
     <React.Fragment>
         <Header />
+        {/* <ScrollBarLeft percentScroll={percentScroll} /> */}
         <Section name='sec-01'>
           <div className='presentation-text'>
             <h1>Olá, Acadêmica(o)!</h1>
-            <p>It is a long established fact that a reader wily the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that </p>
+            <p>It is a long establiSSSSshed faDsssct that a reader wily the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that </p>
             <div className='presentation_buttons'>
-              <Button setScrollPage={() => scroll(0, window.innerHeight) } secondaryClass='btn-secondary'>ainda não sei.</Button>
-              <Button setScrollPage={() => scroll(0, 2*window.innerHeight) } secondaryClass='btn-primary'>vou fazer ENADE!</Button>
+              <Button  href='#o-que-e-enade' secondaryClass='btn-secondary'>ainda não sei.</Button>
+              <Button href='#como-se-preparar' secondaryClass='btn-primary'>vou fazer ENADE!</Button>
             </div>
           </div>
           <div className='presentation-image'>
             <img className='call-image' src='images/menino-mochila.png' height='400' />
           </div>
         </Section>
-        <Section name='sec-02'>
+        <Section  id="o-que-e-enade" name='sec-02'>
           <div className="o-que-e">
             <h2>Tá, mas o que é ENADE?</h2>
             <p><p>It is a long established fact that a reader wily the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that </p></p>
@@ -211,7 +210,7 @@ const App = () => {
               </ul>
           </div>
         </Section>
-        <Section name='sec-03'>
+        <Section id="como-se-preparar" name='sec-03'>
           <div className="se-prepare_first-content">
             <h2>Como se preparar?</h2>
             <p>É hora de mostrar todo seu potencial  adquirido durante o curso. Criamos um ambiente de estudos na Plataforma Teams, onde você terá acesso </p>
@@ -230,7 +229,7 @@ const App = () => {
           <div className="se-prepare_last-content">
             <img className="img-chamada" src="images/menino-computador.png" />
             <span>Acesse as salas virtuais com conteúdos exclusívos de seu curso:</span>
-            <Button setScrollPage={() => scroll(0,  3*window.innerHeight) } secondaryClass="btn-with-icon" iconName="video-two" type="button-with-icon">COMO FUNCIONA?</Button>
+            <Button  href='#video-tutorial' secondaryClass="btn-with-icon" iconName="video-two" type="button-with-icon">COMO FUNCIONA?</Button>
           </div>
         </Section>
         <Section name='sec-04'>
@@ -246,10 +245,14 @@ const App = () => {
             <span>*Datas sujeitas as alterações pelo MEC.</span>
           </div>
         </Section>
-        <Section name='sec-05' />
+        <Section name='sec-05' id="video-tutorial" />
+
     </React.Fragment>
   );
 }
 
 
-ReactDOM.render(<App />, document.getElementById('app'))
+
+
+
+ReactDOM.render(<App />, document.getElementById('app'));
