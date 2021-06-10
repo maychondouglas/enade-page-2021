@@ -88,13 +88,13 @@ const Button = (props) => {
   switch (props.type) {
     case 'button-with-icon':
       return (
-        <button className={`btn ${ props.secondaryClass }`} onClick={ props.btnClick }  disabled={ props.btnDisabled?true:false }><span class="button-icon"><img src={`images/icons/${props.iconName}.svg`}/></span><span>{props.children}</span></button>
+        <button className={`btn ${ props.secondaryClass }`}  onClick={ props.setScrollPage }  disabled={ props.btnDisabled?true:false }><span class="button-icon"><img src={`images/icons/${props.iconName}.svg`}/></span><span>{props.children}</span></button>
       );  
       break;
   
     default:
       return (
-        <button className={`btn ${ props.secondaryClass }`} onClick={ props.btnClick }  disabled={ props.btnDisabled?true:false }>{props.children}</button>
+        <button className={`btn ${ props.secondaryClass }`} onClick={ props.setScrollPage }  disabled={ props.btnDisabled?true:false }>{props.children}</button>
       );  
       break;
   }
@@ -162,7 +162,10 @@ const SchenduleDate = (props) => {
     </div>
   );
 }
+
 const App = () => {
+
+  const [scrollPage, setScrollPage] = new React.useState(0);
 
   return (
     <React.Fragment>
@@ -172,8 +175,8 @@ const App = () => {
             <h1>Olá, Acadêmica(o)!</h1>
             <p>It is a long established fact that a reader wily the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that </p>
             <div className='presentation_buttons'>
-              <Button secondaryClass='btn-secondary'>ainda não sei.</Button>
-              <Button secondaryClass='btn-primary'>vou fazer ENADE!</Button>
+              <Button setScrollPage={() => scroll(0, window.innerHeight) } secondaryClass='btn-secondary'>ainda não sei.</Button>
+              <Button setScrollPage={() => scroll(0, 2*window.innerHeight) } secondaryClass='btn-primary'>vou fazer ENADE!</Button>
             </div>
           </div>
           <div className='presentation-image'>
@@ -227,7 +230,7 @@ const App = () => {
           <div className="se-prepare_last-content">
             <img className="img-chamada" src="images/menino-computador.png" />
             <span>Acesse as salas virtuais com conteúdos exclusívos de seu curso:</span>
-            <Button secondaryClass="btn-with-icon" iconName="video-two" type="button-with-icon">COMO FUNCIONA?</Button>
+            <Button setScrollPage={() => scroll(0,  3*window.innerHeight) } secondaryClass="btn-with-icon" iconName="video-two" type="button-with-icon">COMO FUNCIONA?</Button>
           </div>
         </Section>
         <Section name='sec-04'>
@@ -247,5 +250,6 @@ const App = () => {
     </React.Fragment>
   );
 }
+
 
 ReactDOM.render(<App />, document.getElementById('app'))
