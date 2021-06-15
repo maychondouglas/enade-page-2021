@@ -1,5 +1,5 @@
 header {
-  width: 100vw;
+  
   border-bottom: solid 2px;
   background-image: linear-gradient(to right, #ffffff00 0%, #ffffff10 50%, #ffffff00 100% );
   border-image: linear-gradient(to right, #ffffff00 0%, #ffffff3f 50%, #ffffff00 100% );
@@ -26,11 +26,13 @@ header {
   }
 }
 
+
+
 section {
   
   //border-bottom: solid 1px;
   height: auto;
-  width: 100vw;
+  
   padding: 2rem 0;
   left: 0;
   min-height: 100vh;
@@ -186,6 +188,7 @@ section {
       .search-content{
         grid-column: 1/-1;
         
+        margin: 3rem 0;
         display: flex;
         justify-content: center;
         form{
@@ -241,15 +244,35 @@ section {
             }
           }
         }
+        .msg-result{
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+          background-color: #f2f2f2;
+          border-radius: 15px;
+          color: $primary-color;
+          overflow: hidden;
+          width: auto;
+          transition: opacity 0.5s;
+        }
+
+        .hide{
+          opacity: 0;
+          width: 0;
+        }
+
       }
       .courses-content{
         padding: 2rem 0rem;
-        background-image: linear-gradient(to right, #ffffff00 0%, #ffffff10 50%, #ffffff00 100% );
+        //background-image: linear-gradient(to right, #ffffff00 0%, #ffffff10 50%, #ffffff00 100% );
         grid-column: 1/-1;
 
         h3{
           width: 100%;
           text-align: center;
+          border-bottom: solid 2px;
+          border-image: linear-gradient(to right, #ffffff00 0%, #ffffff3f 50%, #ffffff00 100% );
+          border-image-slice: 1;
           
         }
         .courses-list{
@@ -270,7 +293,8 @@ section {
           }
           
           li{
-            margin: 0.2rem 0;
+            margin: 0.6rem 0;
+            line-height: 1.3rem;
 
           }
         }
