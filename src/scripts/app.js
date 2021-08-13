@@ -1,180 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { SchenduleDate } from './components/SchenduleDate';
+import { Section } from './components/Section';
+import { Button } from './components/Button';
+import { Attributes } from './components/Attributes';
+import { dates, courses } from './repository/data';
 import '../scss/main.scss';
-import { data } from './data.js';
-
-const courses = [
-  { nome: "Ciências Biológicas" },
-  { nome: "Pedagogia" },
-  { nome: "Química" },
-  { nome: "Análise e Desenvolvimento de Sistemas" },
-  { nome: "Análise e Desenvolvimento de Sistemas" },
-  { nome: "Direito" },
-  { nome: "Ciências Contábeis" },
-  { nome: "Publicidade e Propaganda" },
-  { nome: "Gestão Comercial" },
-  { nome: "Gestão de Recursos Humanos" },
-  { nome: "Gestão Financeira" },
-  { nome: "Gestão Pública" },
-  { nome: "Gestão em Logística" },
-  { nome: "Gestão de Marketing" },
-  { nome: "Processos Gerenciais " },
-  { nome: "Agronomia" },
-  { nome: "Arquitetura e Urbanismo" },
-  { nome: "Enfermagem" },
-  { nome: "Engenharia Civil " },
-  { nome: "Engenharia Elétrica" },
-  { nome: "Farmácia" },
-  { nome: "Medicina Veterinária" },
-  { nome: "Gestão Ambiental" },
-  { nome: "Engenharia da Computação" },
-];
-
-const dates = [
-  {
-    description: 'Liberação das regras do ENADE;',
-    initialDate: new Date("2021-05-25T00:00:00"),
-    finalDate: null,
-  },
-/*   {
-    description: 'Inscrição dos alunos classificados para o ENADE;',
-    initialDate: new Date("2021-07-02T00:00:00"),
-    finalDate: new Date("2021-08-12T00:00:00"),
-  }, */
-  {
-    description: 'Teste de dentro do período Ocorrendo;',
-    initialDate: new Date("2021-06-02T00:00:00"),
-    finalDate: new Date("2021-08-12T00:00:00"),
-  },
-  {
-    description: 'Inscrição dos alunos concluintes;',
-    initialDate: new Date("2021-08-14T00:00:00"),
-    finalDate: new Date("2021-11-21T00:00:00"),
-  },
-  {
-    description: 'Liberação dos locais de prova;',
-    initialDate: new Date("2021-11-09T00:00:00"),
-    finalDate: null,
-  },
-  {
-    description: 'Realização da prova ENADE',
-    initialDate: new Date("2021-11-25T00:00:00"),
-    finalDate: null,
-  },
-];
-
-
-const Header = (props) => {
-  return (
-    <header>
-      <div className={`container ${props.name}`}>
-        <a href="https://anhanguera.edu.br"><img height='40' width="auto" src="images/unigoias.svg"/></a>
-      </div>
-    </header>
-  );
-}
-
-const Section = (props) => {
-  return (
-    <section id={ props.id } className={`section_${props.name}`}>
-      <div className={`container ${props.name}`}>
-        {props.children}
-      </div>
-    </section>
-  );
-}
-
-const Button = (props) => {
-
-  switch (props.type) {
-    case 'button-with-icon':
-      return (
-        <a href={props.href} className={`btn ${ props.secondaryClass }`} disabled={ props.btnDisabled?true:false }><span class="button-icon"><img src={`images/icons/${props.iconName}.svg`}/></span><span>{props.children}</span></a>
-      );  
-      break;
-    case 'button-submit-icon':
-      return (
-        <button className={`btn ${ props.secondaryClass }`} onClick={props.functionClick}>{props.children}</button>
-      );  
-      break;
-    default:
-      return (
-        <a href={props.href} className={`btn ${ props.secondaryClass }`} disabled={ props.btnDisabled?true:false }>{props.children}</a>
-      );  
-      break;
-  }
-
-}
-
-const Attributes = (props) => {
-  return (
-    <div className="attribute">
-      <div className="attribute_icon">
-        <img src={`images/icons/${props.iconName}.svg`} />
-      </div>
-      <span>{props.children}</span>
-    </div>
-  );
-}
-
-const SchenduleDate = (props) => {
-
-  //data que o cliente (navegador) acessou a página
-  let baseDate = new Date();
-  let todayIs;
-
-  //testando data do cronograma para ser customizado conforme a data atual
-  if(props.finalDate != null){
-
-    if(baseDate < props.initialDate){
-      //não chegou ainda
-      todayIs = 'before';
-
-    }else if(baseDate > props.initialDate && baseDate < props.finalDate){
-      //durante
-      todayIs = 'during';
-    }else if(baseDate > props.finalDate){
-      //já ocorreu
-      todayIs = 'after';
-    }
-
-  }else{
-
-    //é só um dia, nào tem data final
-    if(baseDate < props.initialDate){
-      //não chegou ainda
-      todayIs = 'before';
-      
-    }else if(baseDate - props.initialDate < 24*3600*1000 ){
-      //estou no dia do evento
-      todayIs = 'during';
-    }else{
-      //já ocorreu
-      todayIs = 'after';
-    }
-  }
-
-  //mostrar o período ou a data
-  let textDateLabel = (props.finalDate)?`${("00" + (props.initialDate.getDate())).slice(-2)}/${("00" + (props.initialDate.getMonth() + 1)).slice(-2)} até ${("00" + (props.finalDate.getDate())).slice(-2)}/${("00" + (props.finalDate.getMonth() + 1)).slice(-2)}`:`${("00" + (props.initialDate.getDate() )).slice(-2)}/${("00" + (props.initialDate.getMonth() + 1)).slice(-2)}`;
-
-  return(
-    <div className={`date-schendule date-schendule_${todayIs}`}>
-      <div className="schendule_date_period">{textDateLabel}</div>
-      <div className="schendule_date_description">{props.children}</div>
-      <div className="schendule_date_icon">
-        <img src={`images/icons/${todayIs}.svg`} />
-      </div>
-    </div>
-  );
-}
 
 const App = () => {
 
   return (
     <React.Fragment>
-        <Header />
-        {/* <ScrollBarLeft percentScroll={percentScroll} /> */}
+      <header>
+        <div className='container'>
+          <a href="https://anhanguera.edu.br"><img height='40' width="auto" src="images/unigoias.svg"/></a>
+          <a href="">Teste</a>
+        </div>
+      </header>
         <Section name='sec-01'>
           <div className='presentation-text'>
             <h1>Olá, Acadêmica(o)!</h1>
@@ -199,19 +41,6 @@ const App = () => {
             <Attributes iconColor="#5f00ba" iconName="trophy">Realizado de 3 em 3 anos no curso</Attributes>
           </div>
           <div className="search-content">
-            {/* <form>
-              <label>Confira se você está convocado para o ENADE 2021:</label>
-              <input id="encontrar" type="text"  maxlength="11" placeholder="digite sua matrícula ou CPF..."></input>
-              <Button type="button-submit-icon" functionClick={encontrar} secondaryClass='btn-primary'>Verificar</Button>
-            </form>
-            <div className="msg-result">
-              <h4 className="result"><span className="result-name"></span>, você foi selecionado!</h4>
-              <span className="result-text">Agoras é hora de se preparar e tals.</span>
-              <div className="result-buttons">
-
-              </div>
-            </div> */}
-            
             <div className="msg-alert">
               Lista de Participantes será liberada em:
               <span>00 de Xxxxxx de 2021</span>
