@@ -57,7 +57,7 @@ section {
       @media screen and (max-width:750px){
         height: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
       }
 
@@ -191,9 +191,30 @@ section {
         margin: 3rem 0;
         display: flex;
         justify-content: center;
+        
+        @media screen and (max-width:750px){
+          flex-direction: column;
+  
+        }
+
+        .msg-alert {
+          background-color: $tertiary-color;
+          padding: 1rem 2.5rem;
+          text-align: center;
+          border-radius: 15px;
+          font-size: 1.025rem;
+
+          span {
+            display: block;
+            font-weight: 700;
+            font-size: 2rem;
+          }
+        }
+
         form{
-          margin: 2rem;
+          //margin: 2rem;
           max-width: 50%;
+          justify-content: center;
           display: flex;
           flex-direction: column;
 
@@ -331,7 +352,7 @@ section {
             &_item{
               display: flex;
               align-items: center;
-              justify-content: center;
+              //justify-content: center;
 
               span{
                 display: inline-flex;
@@ -390,6 +411,10 @@ section {
         height: 100%;
       }
     }
+  }
+
+  &#video-tutorial{
+    
   }
 }
 

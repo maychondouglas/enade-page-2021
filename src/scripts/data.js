@@ -16,7 +16,7 @@ export const data = {
     },
     {
       matricula: 'd6878325b3fcac4eb46ec0e21f5bc6bd',
-      chave2: 'cbc2981f31053e56cb79596445daf701',
+      chave2: '03994679125',
       nome: 'Maychon Douglas Dutra Pires'
     }]
   
